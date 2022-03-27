@@ -16,13 +16,7 @@ jobs:
       fail-fast: false
       matrix:
         tag:
-          - 8
-          - 8j9
-          - 11
-          - 11j9
-          - 16
-          - 17
-          - 17j9
+          - 17corretto
     steps:
       - uses: actions/checkout@v2
       - uses: docker/setup-qemu-action@v1
@@ -42,4 +36,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/pterodactyl/yolks:java_${{ matrix.tag }}
+            ghcr.io/arima0k/yolks:java_${{ matrix.tag }}
