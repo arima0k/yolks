@@ -1,13 +1,28 @@
-FROM        --platform=$TARGETOS/$TARGETARCH amazoncorretto:17
+FROM amazonlinux:2
 
+ARG version=17.0.2.8-1
 LABEL       author="Luis Vera" maintainer="lvera@tecstim.com"
 
 LABEL       org.opencontainers.image.source="https://github.com/arima0k/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-RUN apt-get update -y \
-&& apt-get install -y curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6 \
-&& useradd -d /home/container -m container
+RUN set -eux \
+    && export GNUPGHOME="$(mktemp -d)" \
+    && curl -fL -o corretto.key https://yum.corretto.aws/corretto.key \
+    && gpg --batch --import corretto.key \
+    && gpg --batch --export --armor '6DC3636DAE534049C8B94623A122542AB04F24E3' > corretto.key \
+    && rpm --import corretto.key \
+    && rm -r "$GNUPGHOME" corretto.key \
+    && curl -fL -o /etc/yum.repos.d/corretto.repo https://yum.corretto.aws/corretto.repo \
+    && grep -q '^gpgcheck=1' /etc/yum.repos.d/corretto.repo \
+    && echo "priority=9" >> /etc/yum.repos.d/corretto.repo \
+    && yum install -y java-17-amazon-corretto-devel-$version \
+    && (find /usr/lib/jvm/java-17-amazon-corretto -name src.zip -delete || true) \
+    && yum install -y fontconfig \
+    && yum clean all
+
+ENV LANG C.UTF-8
+ENV JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto
 
 USER        container
 ENV         USER=container HOME=/home/container
