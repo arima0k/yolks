@@ -7,10 +7,10 @@ on:
     branches:
       - master
     paths:
-      - java/**
+      - java/17corretto/**
 jobs:
   push:
-    name: "yolks:java_${{ matrix.tag }}"
+    name: "yolks:java_17corretto"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -31,9 +31,9 @@ jobs:
           password: ${{ secrets.REGISTRY_TOKEN }}
       - uses: docker/build-push-action@v2
         with:
-          context: ./java
-          file: ./java/${{ matrix.tag }}/Dockerfile
+          context: ./java/17corretto
+          file: ./java/17corretto/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/arima0k/yolks:java_${{ matrix.tag }}
+            ghcr.io/arima0k/yolks:java_17corretto
