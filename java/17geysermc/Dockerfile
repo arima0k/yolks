@@ -22,7 +22,7 @@ RUN set -eux \
     && yum install -y binutils \
     && yum install -y git \
 	  && yum install -y jq \
-    && yum install net-tools \
+    && yum install -y net-tools \
     && jlink --add-modules "$(java --list-modules | sed -e 's/@[0-9].*$/,/' | tr -d \\n)" --no-man-pages --no-header-files --strip-debug --output /opt/corretto-slim \
     && yum remove -y binutils java-17-amazon-corretto-devel-$version \
     && mkdir -p /usr/lib/jvm/ \
