@@ -7,15 +7,16 @@ on:
     branches:
       - master
     paths:
-      - java/GeyserMC/**
+      - java/**
 jobs:
   push:
-    name: "yolks:GeyserMC"
+    name: "yolks:java_${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         tag:
+          - 17corretto
           - GeyserMC
     steps:
       - uses: actions/checkout@v2
@@ -31,9 +32,9 @@ jobs:
           password: ${{ secrets.REGISTRY_TOKEN }}
       - uses: docker/build-push-action@v2
         with:
-          context: ./java/GeyserMC
-          file: ./java/GeyserMC/Dockerfile
+          context: ./java/${{ matrix.tag }}
+          file: ./java/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/arima0k/yolks:GeyserMC
+            ghcr.io/arima0k/yolks:java_${{ matrix.tag }}
