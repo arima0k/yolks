@@ -62,7 +62,7 @@ if [ "${AUTO_UPDATE}" == "1" ]; then
                 echo "Updating from '$CURRENT_BUILD' -> '$LATEST_BUILD'"
                 JAR_NAME="${PROJECT}-${MINECRAFT_VERSION}-${LATEST_BUILD}.jar"
                 DOWNLOAD_URL="https://papermc.io/api/v2/projects/${PROJECT}/versions/${MINECRAFT_VERSION}/builds/${LATEST_BUILD}/downloads/${JAR_NAME}"
-                curl -o "${SERVER_JARFILE}" "${DOWNLOAD_URL}'"
+                curl -o "${SERVER_JARFILE}" "${DOWNLOAD_URL}"
 
 
         echo "$LATEST_BUILD" > ".build"
