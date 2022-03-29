@@ -17,8 +17,8 @@ jobs:
       matrix:
         tag:
           - 17corretto
-          - GeyserMC
-          - paper
+          - 17geysermc
+          - 17paper
     steps:
       - uses: actions/checkout@v2
       - uses: docker/setup-qemu-action@v1
