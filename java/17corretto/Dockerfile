@@ -7,7 +7,7 @@ LABEL       org.opencontainers.image.source="https://github.com/arima0k/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 RUN apk update \
-    && apk add curl ca-certificates openssl git tar sqlite fontconfig freetype tzdata iproute2 libstdc++6 jq \
+    && apk add bash curl ca-certificates openssl git tar sqlite fontconfig freetype tzdata iproute2 libstdc++6 jq \
     && adduser -h /home/container -D container
 
 USER        container
