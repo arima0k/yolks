@@ -21,7 +21,7 @@
 #SOFTWARE.
 #
 
-FROM --platform=linux/amd64 amazoncorretto:17-alpine-jdk
+FROM amazoncorretto:17
 
 ARG version=17.0.2.8-1
 LABEL       author="Luis Vera" maintainer="lvera@tecstim.com"
@@ -29,9 +29,9 @@ LABEL       author="Luis Vera" maintainer="lvera@tecstim.com"
 LABEL       org.opencontainers.image.source="https://github.com/arima0k/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-RUN apk update \
-    && apk add bash curl ca-certificates openssl git tar sqlite fontconfig freetype tzdata iproute2 libstdc++6 jq \
-    && adduser -h /home/container -D container
+RUN && yum install -y binutils git jq net-tools \
+    && useradd -d /home/container -m container \
+    && yum clean all
 
 USER        container
 ENV         USER=container HOME=/home/container
