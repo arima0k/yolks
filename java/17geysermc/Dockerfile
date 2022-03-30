@@ -1,4 +1,4 @@
-FROM --platform=$TARGETOS/$TARGETARCH amazoncorretto:17-alpine-jdk
+FROM --platform=$TARGETOS/$TARGETARCH amazoncorretto:17-alpine-full
 
 ARG version=17.0.2.8-1
 LABEL       author="Luis Vera" maintainer="lvera@tecstim.com"
