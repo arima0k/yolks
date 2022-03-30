@@ -19,3 +19,5 @@ Forked from [pterodactyl/yolks](https://github.com/pterodactyl/yolks).
 ## Note
 
 The auto update images require a custom egg, can be found on [`arima0k/eggs`](https://github.com/arima0k/Pterodactyl-eggs)
+
+Make sure to fix the minecraft version on the `MINECRAFT_VERSION` variable so it won't jump versions automatically, example from 1.18.2 to 1.19.1.
