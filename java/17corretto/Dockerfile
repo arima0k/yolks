@@ -1,4 +1,4 @@
-FROM amazoncorretto:17-alpine-jdk
+FROM amazoncorretto/amazoncorretto:17-alpine-jdk
 
 ARG version=17.0.2.8-1
 LABEL       author="Luis Vera" maintainer="lvera@tecstim.com"
