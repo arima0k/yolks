@@ -13,7 +13,5 @@ Forked from [pterodactyl/yolks](https://github.com/pterodactyl/yolks).
     * `ghcr.io/arima0k/yolks:java_17paper`
   * [`Velocity auto update`](https://github.com/arima0k/yolks/tree/master/java/17velocity)
     * `ghcr.io/arima0k/yolks:java_17velocity`
-  * [`GeyserMC`](https://github.com/arima0k/yolks/tree/master/java/17geyser)
-    * `ghcr.io/arima0k/yolks:java_17geyser`
-  
-  
+  * [`GeyserMC`](https://github.com/arima0k/yolks/tree/master/java/17geysermc)
+    * `ghcr.io/arima0k/yolks:java_17geysermc`
