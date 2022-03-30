@@ -23,7 +23,6 @@
 
 FROM amazoncorretto:17
 
-ARG version=17.0.2.8-1
 LABEL       author="Luis Vera" maintainer="lvera@tecstim.com"
 
 LABEL       org.opencontainers.image.source="https://github.com/arima0k/yolks"
