@@ -28,7 +28,8 @@ LABEL       author="Luis Vera" maintainer="lvera@tecstim.com"
 LABEL       org.opencontainers.image.source="https://github.com/arima0k/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-RUN yum install -y binutils git jq net-tools \
+RUN yum update \
+    && yum install -y binutils git jq iproute \
     && useradd -d /home/container -m container \
     && yum clean all
 
