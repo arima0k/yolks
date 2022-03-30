@@ -19,6 +19,7 @@ jobs:
           - 17corretto
           - 17geysermc
           - 17paper
+          - 17velocity
     steps:
       - uses: actions/checkout@v2
       - uses: docker/setup-qemu-action@v1
