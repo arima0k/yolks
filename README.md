@@ -15,3 +15,7 @@ Forked from [pterodactyl/yolks](https://github.com/pterodactyl/yolks).
     * `ghcr.io/arima0k/yolks:java_17velocity`
   * [`GeyserMC`](https://github.com/arima0k/yolks/tree/master/java/17geysermc)
     * `ghcr.io/arima0k/yolks:java_17geysermc`
+
+## Note
+
+The auto update images require a custom egg, can be found on [`arima0k/eggs`](https://github.com/arima0k/Pterodactyl-eggs)
