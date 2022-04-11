@@ -31,7 +31,7 @@ LABEL       org.opencontainers.image.licenses=MIT
 RUN yum update \
     && yum install -y binutils git jq iproute \
     && useradd -d /home/container -m container \
-    && yum clean all
+    && yum clean all \
     && rm -rf /var/cache/yum
 
 USER        container
