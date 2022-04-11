@@ -32,6 +32,7 @@ RUN yum update \
     && yum install -y binutils git jq iproute \
     && useradd -d /home/container -m container \
     && yum clean all
+    && rm -rf /var/cache/yum
 
 USER        container
 ENV         USER=container HOME=/home/container
