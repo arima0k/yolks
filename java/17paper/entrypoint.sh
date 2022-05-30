@@ -40,8 +40,8 @@ java -version
 
 PROJECT=paper
 
-VER_EXISTS=`curl -s https://papermc.io/api/v2/projects/${PROJECT} | jq -r --arg VERSION $MINECRAFT_VERSION '.versions[] | contains($VERSION)' | grep true`         
-LATEST_VERSION=`curl -s https://papermc.io/api/v2/projects/${PROJECT} | jq -r '.versions' | jq -r '.[-1]'`
+VER_EXISTS=`curl -s https://api.papermc.io/api/v2/projects/${PROJECT} | jq -r --arg VERSION $MINECRAFT_VERSION '.versions[] | contains($VERSION)' | grep true`
+LATEST_VERSION=`curl -s https://api.papermc.io/api/v2/projects/${PROJECT} | jq -r '.versions' | jq -r '.[-1]'`
 
 # check MINECRAFT_VERSION variable
 if [ "${VER_EXISTS}" == "true" ]; then
@@ -55,14 +55,14 @@ fi
 if [ "${AUTO_UPDATE}" == "1" ]; then
         echo "Checking for updates..."
 
-        LATEST_BUILD=`curl -s https://papermc.io/api/v2/projects/paper/versions/${MINECRAFT_VERSION} | jq '.builds[-1]'`
+        LATEST_BUILD=`curl -s https://api.papermc.io/api/v2/projects/paper/versions/${MINECRAFT_VERSION} | jq '.builds[-1]'`
         CURRENT_BUILD=`cat .build 2>/dev/null`
 
         if [ "$LATEST_BUILD" != "$CURRENT_BUILD" ]; then
                 echo "Update available!"
                 echo "Updating from '$CURRENT_BUILD' -> '$LATEST_BUILD'"
                 JAR_NAME="${PROJECT}-${MINECRAFT_VERSION}-${LATEST_BUILD}.jar"
-                DOWNLOAD_URL="https://papermc.io/api/v2/projects/${PROJECT}/versions/${MINECRAFT_VERSION}/builds/${LATEST_BUILD}/downloads/${JAR_NAME}"
+                DOWNLOAD_URL="https://api.papermc.io/api/v2/projects/${PROJECT}/versions/${MINECRAFT_VERSION}/builds/${LATEST_BUILD}/downloads/${JAR_NAME}"
                 curl -o "${SERVER_JARFILE}" "${DOWNLOAD_URL}"
 
 
